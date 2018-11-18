@@ -1,0 +1,49 @@
+<form [formGroup]="addPlayerForm" class="example-form">
+  <div class="example-container">
+
+    <input type="hidden" placeholder="id" formControlName="id" name="id">
+
+
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Address" formControlName="address" name="address" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Type" formControlName="type" name="type">
+        <mat-option value="Batsman">Batsman</mat-option>
+        <mat-option value="Bowler">Bowler</mat-option>
+        <mat-option value="keeper">wicket keeper</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <label>Gender: </label>
+    <mat-radio-group formControlName="gender" name="gender">
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+      <mat-radio-button value="Other">Other</mat-radio-button>
+    </mat-radio-group>
+    &nbsp;
+    <!-- <div class="container">
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Upload Image</button>
+        <input hidden type="file" #fileInput>
+      </div>  -->
+    <div class="row">
+      <div class="col-sm-8">
+        <input type="file" name="uploadFile" (change)="onFileSelected($event)">
+      </div>
+      <div class="col-sm-4">
+        <img src="http://localhost/laravel/test_project/storage/app/thumb_img/aboutme.jpg" id="image" alt="Player pic"
+          style="width: 150px; height: 150px;">
+      </div>
+    </div>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    <button *ngIf="id" mat-flat-button (click)="addPlayer(addPlayerForm.value)" color="primary" [disabled]='!addPlayerForm.valid'>Edit</button>
+    <button *ngIf="!id" mat-flat-button (click)="addPlayer(addPlayerForm.value)" color="primary" [disabled]='!addPlayerForm.valid'>Add</button>
+
+  </div>
+
+</form>

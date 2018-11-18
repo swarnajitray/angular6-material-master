@@ -1,0 +1,39 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="home">
+	<div class="container">
+		<form [formGroup]="searchForm" (keyup)="doSearch(searchForm.value)">
+			<input type="text"  formControlName="searchByName" >
+			<input type="submit" value="Search By Name">
+		</form>
+		<h1>List of Player</h1>
+		<table border="1" width="500px">
+			<tr >
+				<th>Name</th>
+				<th>Address</th>
+				<th>Gender</th>
+				<th>type</th>
+				<th>Action</th>
+			</tr>
+			<ng-container *ngIf="count >0">
+				<tr  *ngFor="let Profile of profiles | paginate: { id: 'InstancesId1', itemsPerPage: itemsPerPage, currentPage: pageno, totalItems: count }">
+				<td>{{Profile.name}}</td>
+				<td>{{Profile.address}}</td>
+				<td>{{Profile.gender}}</td>
+        		<td>{{Profile.type}}</td>
+        <!-- <td></td> -->
+				<td>&nbsp;&nbsp;<a href="#" routerLink="/nav/edit/{{Profile.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;<a  (click)="deleteProfile(Profile.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+			</tr>
+		    </ng-container>
+			<tr *ngIf="count ==0">
+				<td colspan="5" align="center">No Record found</td>
+			</tr>
+		</table>
+		<pagination-controls *ngIf="count >0" (pageChange)="getProfiles($event,itemsPerPage,searchByName)" id="InstancesId1">
+		
+      	
+      </pagination-controls>
+	</div>
+</div>
+
+

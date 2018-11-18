@@ -1,0 +1,33 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin: 10% auto;
+  padding: 70px;
+  border: 1px solid #4CAF50;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.example-container .mat-radio-button {
+    margin: 0 5px;
+    
+  }
+  .example-container .mat-flat-button {
+    margin: 0 5px;
+    margin-top: 20px;
+    width: 50px;
+    text-align: center;
+    position:relative;
+    left:45%;
+  }
+
+  .example-container .mat-spinner {
+    margin: 0 5px;
+    text-align: center;
+    position:relative;
+    left:45%;
+  }
+  
